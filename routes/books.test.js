@@ -121,8 +121,7 @@ describe("PUT /books/:isbn", () => {
   test("Responds with 404 for invalid book", async () => {
     const res = await request(app).put(`/books/${book.isbn}`).send({
       isbn: "0123456789",
-      invalid: "invalid",
-      amazon_url: "http://a.co/test",
+      amazon_url: true,
       author: "John Doe",
       language: "russian",
       pages: 222,

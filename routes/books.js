@@ -47,7 +47,7 @@ router.put("/:isbn", async function (req, res, next) {
   const result = jsonschema.validate(req.body, bookSchema);
   if (!result.valid) {
     const errors = result.errors.map((e) => e.stack);
-    const err = new ExpressError(errors, 400);
+    const err = new ExpressError(errors, 404);
     return next(err);
   }
   const updatedBook = await Book.update(req.params.isbn, req.body);
